@@ -6,7 +6,7 @@ function blackFormula(forward::Float64, vol::Float64,
     expiry::Float64, strike::Float64, type::OptionType, annuity::Float64 = 1.)
    logMoneyness = log(forward/strike)
    stdDeviation = vol * sqrt(expiry)
-   d1 = logMoneyness/stdDeviation + stdDeviation
+   d1 = logMoneyness/stdDeviation + 0.5 * stdDeviation
    d2 = d1 - stdDeviation
    normal = Normal(0., 1.)
    flag = type == Put ? -1. : 1.
